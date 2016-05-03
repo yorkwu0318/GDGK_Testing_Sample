@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Testing_Sample</string>
+    <string name="login">登入</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="email_error">Email 不能為空白</string>
+    <string name="password_error">密碼不能為空白</string>
+    <string name="login_success">登入成功</string>
+    <string name="login_failed">登入失敗</string>
+    <string name="login_error">登入發生錯誤</string>
+</resources>
