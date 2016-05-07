@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         LoginViewModel viewModel = new LoginViewModel();
-        presenter = new LoginPresenter(this, viewModel, Injection.provideCommonModel());
+        presenter = new LoginPresenter(this, viewModel, Injection.provideRetrofitModel());
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login_mvvm);
         binding.setViewModel(viewModel);

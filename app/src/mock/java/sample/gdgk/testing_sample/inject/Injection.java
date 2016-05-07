@@ -2,7 +2,7 @@ package sample.gdgk.testing_sample.inject;
 
 import rx.Scheduler;
 import rx.schedulers.Schedulers;
-import sample.gdgk.testing_sample.model.CommonModel;
+import sample.gdgk.testing_sample.model.RetrofitModel;
 
 public class Injection {
     public static Scheduler ObserveScheduler() {
@@ -13,7 +13,7 @@ public class Injection {
         return Schedulers.immediate();
     }
 
-    public static CommonModel provideCommonModel() {
+    public static RetrofitModel provideRetrofitModel() {
         return new FakeCommonModel();
     }
 }

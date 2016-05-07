@@ -1,36 +1,44 @@
-package sample.gdgk.testing_sample.ex1.mvvm;
+package sample.gdgk.testing_sample.ex1.mvp;
 
 import rx.Subscriber;
 import sample.gdgk.testing_sample.inject.Injection;
-import sample.gdgk.testing_sample.model.RetrofitModel;
 import sample.gdgk.testing_sample.model.LoginResponse;
+import sample.gdgk.testing_sample.model.RetrofitModel;
 
 public class LoginPresenter {
     private LoginView view;
-    private LoginViewModel viewModel;
     private RetrofitModel model;
 
-    public LoginPresenter(LoginView view, LoginViewModel viewModel, RetrofitModel model) {
+    public LoginPresenter(LoginView view, RetrofitModel model) {
         this.view = view;
-        this.viewModel = viewModel;
         this.model = model;
     }
 
-    public void onLoginButtonClicked() {
-        if (!checkValid()) {
+    public void checkValidAndLogin(String email, String password) {
+
+        boolean isPassed = true;
+
+        view.clearErrorMessage();
+
+        if ("".equals(email)) {
+            view.showEmailError();
+            isPassed = false;
+        }
+
+        if ("".equals(password)) {
+            view.showPasswordError();
+            isPassed = false;
+        }
+
+        if (!isPassed) {
             return;
         }
-        requestLogin();
+
+        login(email, password);
     }
 
-    private boolean checkValid() {
-        viewModel.emailError.set("".equals(viewModel.email.get()));
-        viewModel.passwordError.set("".equals(viewModel.password.get()));
-        return !(viewModel.emailError.get() || viewModel.passwordError.get());
-    }
-
-    private void requestLogin() {
-        model.login(viewModel.email.get(), viewModel.password.get())
+    private void login(String email, String password) {
+        model.login(email, password)
                 .observeOn(Injection.ObserveScheduler())
                 .subscribeOn(Injection.SubscribeScheduler())
                 .subscribe(getSubscriber());
@@ -45,15 +53,15 @@ public class LoginPresenter {
 
             @Override
             public void onError(Throwable e) {
-                view.showLoginErrorMessage(e.getMessage());
+                view.showLoginError(e.getMessage());
             }
 
             @Override
             public void onNext(LoginResponse loginResponse) {
                 if (loginResponse.status == 1) {
-                    view.showLoginSuccessMessage();
+                    view.showLoginSuccess();
                 } else {
-                    view.showLoginFailedMessage();
+                    view.showLoginFailed();
                 }
             }
         };

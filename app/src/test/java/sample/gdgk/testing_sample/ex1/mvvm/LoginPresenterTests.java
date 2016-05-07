@@ -6,12 +6,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import rx.Observable;
 import sample.gdgk.testing_sample.mock.FakeLoginResponse;
-import sample.gdgk.testing_sample.model.CommonModel;
+import sample.gdgk.testing_sample.model.RetrofitModel;
 
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.verify;
@@ -27,7 +26,7 @@ public class LoginPresenterTests {
     private LoginViewModel viewModel;
 
     @Mock
-    private CommonModel model;
+    private RetrofitModel model;
 
 
     @Before

@@ -15,7 +15,7 @@ public class ApiGenerator {
     private static Retrofit getRetrofit() {
 
         return new Retrofit.Builder()
-                .baseUrl("http://the-white-fire-light-center.tw")
+                .baseUrl("http://the-white-fire-light-center.tw/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(getClient())
