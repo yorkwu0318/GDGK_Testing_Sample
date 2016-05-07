@@ -16,11 +16,18 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     private TextInputLayout emailTextInputLayout;
     private TextInputLayout passwordTextInputLayout;
 
+    private View root;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_ex1);
+
+        root = findViewById(R.id.root);
+
+        emailTextInputLayout = (TextInputLayout) findViewById(R.id.emailTextInputLayout);
+        passwordTextInputLayout = (TextInputLayout) findViewById(R.id.passwordTextInputLayout);
 
         EditText emailEdit = (EditText) findViewById(R.id.emailEdit);
         EditText passwordEdit = (EditText) findViewById(R.id.passwordEdit);
@@ -29,8 +36,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         loginButton.setOnClickListener(v -> presenter.checkValidAndLogin(emailEdit.getText().toString(),
                 passwordEdit.getText().toString()));
 
-        emailTextInputLayout = (TextInputLayout) findViewById(R.id.emailTextInputLayout);
-        passwordTextInputLayout = (TextInputLayout) findViewById(R.id.passwordTextInputLayout);
+
     }
 
     @Override
@@ -51,16 +57,16 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void showLoginError(String message) {
-        Snackbar.make(findViewById(R.id.root), message, Snackbar.LENGTH_LONG).show();
+        Snackbar.make(root, message, Snackbar.LENGTH_LONG).show();
     }
 
     @Override
     public void showLoginSuccess() {
-        Snackbar.make(findViewById(R.id.root), R.string.login_success, Snackbar.LENGTH_LONG).show();
+        Snackbar.make(root, R.string.login_success, Snackbar.LENGTH_LONG).show();
     }
 
     @Override
     public void showLoginFailed() {
-        Snackbar.make(findViewById(R.id.root), R.string.login_failed, Snackbar.LENGTH_LONG).show();
+        Snackbar.make(root, R.string.login_failed, Snackbar.LENGTH_LONG).show();
     }
 }

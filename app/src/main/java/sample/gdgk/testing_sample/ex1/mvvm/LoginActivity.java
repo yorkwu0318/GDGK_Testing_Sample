@@ -7,13 +7,13 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 
 import sample.gdgk.testing_sample.R;
-import sample.gdgk.testing_sample.databinding.ActivityLoginMvvmBinding;
+import sample.gdgk.testing_sample.databinding.ActivityEx1MvvmBinding;
 import sample.gdgk.testing_sample.inject.Injection;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
     private LoginPresenter presenter;
-    private ActivityLoginMvvmBinding binding;
+    private ActivityEx1MvvmBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -21,7 +21,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         LoginViewModel viewModel = new LoginViewModel();
         presenter = new LoginPresenter(this, viewModel, Injection.provideRetrofitModel());
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login_mvvm);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_ex1_mvvm);
         binding.setViewModel(viewModel);
 
         binding.loginButton.setOnClickListener(v -> presenter.onLoginButtonClicked());
