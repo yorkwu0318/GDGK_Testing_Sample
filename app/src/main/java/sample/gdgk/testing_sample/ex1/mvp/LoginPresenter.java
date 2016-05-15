@@ -16,24 +16,6 @@ public class LoginPresenter {
 
     public void checkValidAndLogin(String email, String password) {
 
-        boolean isPassed = true;
-
-        view.clearErrorMessage();
-
-        if ("".equals(email)) {
-            view.showEmailError();
-            isPassed = false;
-        }
-
-        if ("".equals(password)) {
-            view.showPasswordError();
-            isPassed = false;
-        }
-
-        if (!isPassed) {
-            return;
-        }
-
         login(email, password);
     }
 

@@ -1,9 +1,9 @@
-package sample.gdgk.testing_sample.ex1.mvvm;
+package sample.gdgk.testing_sample.ex2.mvvm;
 
 import rx.Subscriber;
 import sample.gdgk.testing_sample.inject.Injection;
-import sample.gdgk.testing_sample.model.LoginResponse;
 import sample.gdgk.testing_sample.model.RetrofitModel;
+import sample.gdgk.testing_sample.model.LoginResponse;
 
 public class LoginPresenter {
     private LoginView view;
@@ -17,7 +17,16 @@ public class LoginPresenter {
     }
 
     public void onLoginButtonClicked() {
+        if (!checkValid()) {
+            return;
+        }
         requestLogin();
+    }
+
+    private boolean checkValid() {
+        viewModel.emailError.set("".equals(viewModel.email.get()));
+        viewModel.passwordError.set("".equals(viewModel.password.get()));
+        return !(viewModel.emailError.get() || viewModel.passwordError.get());
     }
 
     private void requestLogin() {

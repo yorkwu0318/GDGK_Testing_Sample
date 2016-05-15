@@ -10,13 +10,37 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ex1.mvp.LoginActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".ListActivity"
+            android:screenOrientation="portrait"
+            />
+
+        <activity android:name=".ex1.mvp.LoginActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ex1.mvc.LoginActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ex1.mvvm.LoginActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ex2.mvp.LoginActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ex2.mvc.LoginActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".ex2.mvvm.LoginActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

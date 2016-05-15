@@ -1,4 +1,4 @@
-package sample.gdgk.testing_sample.ex1.mvvm;
+package sample.gdgk.testing_sample.ex2.mvvm;
 
 import junit.framework.Assert;
 
