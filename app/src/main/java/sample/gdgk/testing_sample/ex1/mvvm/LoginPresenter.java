@@ -16,11 +16,7 @@ public class LoginPresenter {
         this.model = model;
     }
 
-    public void onLoginButtonClicked() {
-        requestLogin();
-    }
-
-    private void requestLogin() {
+    public void login() {
         model.login(viewModel.email.get(), viewModel.password.get())
                 .observeOn(Injection.ObserveScheduler())
                 .subscribeOn(Injection.SubscribeScheduler())

@@ -6,6 +6,10 @@
         <variable
             name="viewModel"
             type="sample.gdgk.testing_sample.ex2.mvvm.LoginViewModel"/>
+
+        <variable
+            name="presenter"
+            type="sample.gdgk.testing_sample.ex2.mvvm.LoginPresenter"/>
     </data>
 
     <LinearLayout
@@ -55,6 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login"
+            android:onClick="@{() -> presenter.onLoginButtonClicked()}"
             />
     </LinearLayout>
 

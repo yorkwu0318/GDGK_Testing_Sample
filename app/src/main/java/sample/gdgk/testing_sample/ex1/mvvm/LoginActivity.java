@@ -23,8 +23,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_ex1_mvvm);
         binding.setViewModel(viewModel);
-
-        binding.loginButton.setOnClickListener(v -> presenter.onLoginButtonClicked());
+        binding.setPresenter(presenter);
     }
 
     @Override
