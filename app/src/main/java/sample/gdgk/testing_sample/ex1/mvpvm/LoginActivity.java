@@ -1,4 +1,4 @@
-package sample.gdgk.testing_sample.ex1.mvvm;
+package sample.gdgk.testing_sample.ex1.mvpvm;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;

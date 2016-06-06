@@ -1,4 +1,4 @@
-package sample.gdgk.testing_sample.ex1.mvc;
+package sample.gdgk.testing_sample.ex1.mvc.volley;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -6,18 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-
+import rx.Subscriber;
 import sample.gdgk.testing_sample.R;
-import sample.gdgk.testing_sample.ex1.mvc.volley.GsonRequest;
-import sample.gdgk.testing_sample.ex1.mvc.volley.LoginModel;
-import sample.gdgk.testing_sample.ex1.mvc.volley.MyVolley;
 import sample.gdgk.testing_sample.inject.Injection;
 import sample.gdgk.testing_sample.model.LoginResponse;
+import sample.gdgk.testing_sample.model.RetrofitModel;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
-    private LoginModel model = Injection.provideLoginModel();
+    private RetrofitModel model = Injection.provideRetrofitModel();
     private EditText emailEdit;
     private EditText passwordEdit;
     private View root;
@@ -41,24 +37,29 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.loginButton) {
-            GsonRequest<LoginResponse> request = model.login(emailEdit.getText().toString(), passwordEdit.getText().toString()
-                    , new Response.Listener<LoginResponse>() {
+            model.login(emailEdit.getText().toString(), passwordEdit.getText().toString())
+                    .observeOn(Injection.ObserveScheduler())
+                    .subscribeOn(Injection.SubscribeScheduler())
+                    .subscribe(new Subscriber<LoginResponse>() {
                         @Override
-                        public void onResponse(LoginResponse response) {
-                            if (response.status == 1) {
+                        public void onCompleted() {
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            Snackbar.make(root, e.getMessage(), Snackbar.LENGTH_LONG).show();
+                        }
+
+                        @Override
+                        public void onNext(LoginResponse loginResponse) {
+                            if (loginResponse.status == 1) {
                                 Snackbar.make(root, R.string.login_success, Snackbar.LENGTH_LONG).show();
                             } else {
                                 Snackbar.make(root, R.string.login_failed, Snackbar.LENGTH_LONG).show();
                             }
                         }
-                    }, new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-
-                        }
                     });
-
-            MyVolley.getInstance(getApplicationContext()).addToRequestQueue(request);
         }
     }
 

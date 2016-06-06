@@ -61,7 +61,7 @@ public class ListActivity extends NavigationUpActivity {
 
     private List<ListItem> getMVVMList() {
         List<ListItem> list = new ArrayList<>();
-        list.add(new ListItem("ex1", sample.gdgk.testing_sample.ex1.mvvm.LoginActivity.class));
+        list.add(new ListItem("ex1", sample.gdgk.testing_sample.ex1.mvpvm.LoginActivity.class));
         list.add(new ListItem("ex2", sample.gdgk.testing_sample.ex2.mvvm.LoginActivity.class));
 
         return list;

@@ -1,4 +1,4 @@
-package sample.gdgk.testing_sample.ex1.mvvm;
+package sample.gdgk.testing_sample.ex1.mvpvm;
 
 public interface LoginView {
     void showLoginSuccessMessage();

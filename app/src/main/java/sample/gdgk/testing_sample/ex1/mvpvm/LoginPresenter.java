@@ -1,4 +1,4 @@
-package sample.gdgk.testing_sample.ex1.mvvm;
+package sample.gdgk.testing_sample.ex1.mvpvm;
 
 import rx.Subscriber;
 import sample.gdgk.testing_sample.inject.Injection;

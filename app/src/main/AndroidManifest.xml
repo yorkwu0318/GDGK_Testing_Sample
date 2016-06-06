@@ -30,7 +30,7 @@
         <activity android:name=".ex1.mvc.LoginActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".ex1.mvvm.LoginActivity"
+        <activity android:name=".ex1.mvpvm.LoginActivity"
             android:screenOrientation="portrait"/>
 
         <activity android:name=".ex2.mvp.LoginActivity"
