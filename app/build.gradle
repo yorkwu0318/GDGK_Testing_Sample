@@ -78,5 +78,8 @@ dependencies {
     compile "io.reactivex:rxjava:${libs.rxjava}"
     compile "io.reactivex:rxandroid:${libs.rxandroid}"
 
+    // Volley
+    compile "com.mcxiaoke.volley:library:${libs.volley}"
+
 
 }
