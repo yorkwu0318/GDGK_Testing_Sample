@@ -1,4 +1,4 @@
-package sample.gdgk.testing_sample.ex1.mvc.volley;
+package sample.gdgk.testing_sample.demo1;
 
 import android.content.Context;
 import android.graphics.Bitmap;

@@ -5,8 +5,9 @@ import com.android.volley.Response.*;
 import rx.Scheduler;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
-import sample.gdgk.testing_sample.ex1.mvc.volley.GsonRequest;
-import sample.gdgk.testing_sample.ex1.mvc.volley.LoginModel;
+import sample.gdgk.testing_sample.demo1.GsonRequest;
+import sample.gdgk.testing_sample.demo1.MyVolley;
+import sample.gdgk.testing_sample.demo2.VolleyModel;
 import sample.gdgk.testing_sample.model.LoginResponse;
 import sample.gdgk.testing_sample.model.RetrofitModel;
 
@@ -23,14 +24,16 @@ public class Injection {
         return ApiGenerator.createApi(RetrofitModel.class);
     }
 
-    public static LoginModel provideLoginModel() {
-        return new LoginModel() {
+    public static VolleyModel provideVolleyModel() {
+        return new VolleyModel() {
             @Override
-            public GsonRequest<LoginResponse> login(String email, String password,
+            public void login(String email, String password,
                                                     Listener listener, ErrorListener errorListener) {
-                return new GsonRequest<>("http://api.raguhn.tw/login-test.php?account="+email+"&password="+password
+                GsonRequest<LoginResponse> request = new GsonRequest<>("http://api.raguhn.tw/login-test.php?account="+email+"&password="+password
                         , LoginResponse.class,
                         null, listener, errorListener);
+
+                MyVolley.getInstance(null).addToRequestQueue(request);
             }
         };
     }

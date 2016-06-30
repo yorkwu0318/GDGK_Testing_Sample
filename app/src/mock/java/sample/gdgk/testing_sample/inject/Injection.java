@@ -2,7 +2,7 @@ package sample.gdgk.testing_sample.inject;
 
 import rx.Scheduler;
 import rx.schedulers.Schedulers;
-import sample.gdgk.testing_sample.ex1.mvc.volley.LoginModel;
+import sample.gdgk.testing_sample.demo2.VolleyModel;
 import sample.gdgk.testing_sample.model.RetrofitModel;
 
 public class Injection {
@@ -15,10 +15,11 @@ public class Injection {
     }
 
     public static RetrofitModel provideRetrofitModel() {
-        return new FakeCommonModel();
+        return new FakeRetrofitModel();
     }
 
-    public static LoginModel provideLoginModel() {
-        return new FakeLoginModel();
+    public static VolleyModel provideVolleyModel() {
+        return new FakeVolleyModel();
     }
+
 }
