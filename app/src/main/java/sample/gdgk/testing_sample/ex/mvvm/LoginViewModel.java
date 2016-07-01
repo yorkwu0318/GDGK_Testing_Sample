@@ -1,4 +1,4 @@
-package sample.gdgk.testing_sample.ex2.mvvm;
+package sample.gdgk.testing_sample.ex.mvvm;
 
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;

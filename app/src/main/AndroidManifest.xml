@@ -14,16 +14,7 @@
 
         <activity android:name=".demo1.LoginActivity"
             android:screenOrientation="portrait"
-            >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".ex1.mvp.LoginActivity"
-            android:screenOrientation="portrait"/>
+            />
 
         <activity android:name=".demo2.LoginActivity"
             android:screenOrientation="portrait"/>
@@ -31,16 +22,22 @@
         <activity android:name=".demo3.LoginActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".ex1.mvpvm.LoginActivity"
+        <activity android:name=".demo4.mvp.LoginActivity"
+            android:screenOrientation="portrait" />
+
+        <activity android:name=".demo4.mvvm.LoginActivity"
             android:screenOrientation="portrait"/>
 
-        <activity android:name=".ex2.mvp.LoginActivity"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".ex.mvp.LoginActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <activity android:name=".ex2.mvc.LoginActivity"
-            android:screenOrientation="portrait"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
-        <activity android:name=".ex2.mvvm.LoginActivity"
+        <activity android:name=".ex.mvvm.LoginActivity"
             android:screenOrientation="portrait"/>
     </application>
 

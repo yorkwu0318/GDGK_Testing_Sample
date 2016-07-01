@@ -1,4 +1,4 @@
-package sample.gdgk.testing_sample.ex2.mvp;
+package sample.gdgk.testing_sample.ex.mvp;
 
 public interface LoginView {
     void showEmailError();

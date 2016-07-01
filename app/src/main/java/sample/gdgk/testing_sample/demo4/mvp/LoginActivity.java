@@ -1,9 +1,8 @@
-package sample.gdgk.testing_sample.ex2.mvp;
+package sample.gdgk.testing_sample.demo4.mvp;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -12,22 +11,18 @@ import sample.gdgk.testing_sample.R;
 import sample.gdgk.testing_sample.inject.Injection;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
-    private LoginPresenter presenter = new LoginPresenter(this, Injection.provideRetrofitModel());
-    private TextInputLayout emailTextInputLayout;
-    private TextInputLayout passwordTextInputLayout;
+    private LoginPresenter presenter = new LoginPresenter(this, Injection.provideVolleyModel());
 
     private View root;
 
+    @SuppressWarnings("all")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_ex2);
+        setContentView(R.layout.activity_demo4);
 
         root = findViewById(R.id.root);
-
-        emailTextInputLayout = (TextInputLayout) findViewById(R.id.emailTextInputLayout);
-        passwordTextInputLayout = (TextInputLayout) findViewById(R.id.passwordTextInputLayout);
 
         EditText emailEdit = (EditText) findViewById(R.id.emailEdit);
         EditText passwordEdit = (EditText) findViewById(R.id.passwordEdit);
@@ -40,24 +35,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void showEmailError() {
-        emailTextInputLayout.setError(getString(R.string.email_error));
-    }
-
-    @Override
-    public void showPasswordError() {
-        passwordTextInputLayout.setError(getString(R.string.password_error));
-    }
-
-    @Override
-    public void clearErrorMessage() {
-        emailTextInputLayout.setError("");
-        passwordTextInputLayout.setError("");
-    }
-
-    @Override
-    public void showLoginError(String message) {
-        Snackbar.make(root, message, Snackbar.LENGTH_LONG).show();
+    public void showLoginError() {
+        Snackbar.make(root, R.string.login_error, Snackbar.LENGTH_LONG).show();
     }
 
     @Override

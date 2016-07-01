@@ -5,11 +5,11 @@
     <data>
         <variable
             name="viewModel"
-            type="sample.gdgk.testing_sample.ex2.mvvm.LoginViewModel"/>
+            type="sample.gdgk.testing_sample.ex.mvvm.LoginViewModel"/>
 
         <variable
             name="presenter"
-            type="sample.gdgk.testing_sample.ex2.mvvm.LoginPresenter"/>
+            type="sample.gdgk.testing_sample.ex.mvvm.LoginPresenter"/>
     </data>
 
     <LinearLayout

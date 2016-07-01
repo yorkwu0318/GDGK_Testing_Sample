@@ -1,26 +1,36 @@
-package sample.gdgk.testing_sample.ex1.mvp;
+package sample.gdgk.testing_sample.ex.mvvm;
 
 import rx.Subscriber;
 import sample.gdgk.testing_sample.inject.Injection;
-import sample.gdgk.testing_sample.model.LoginResponse;
 import sample.gdgk.testing_sample.model.RetrofitModel;
+import sample.gdgk.testing_sample.model.LoginResponse;
 
 public class LoginPresenter {
     private LoginView view;
+    private LoginViewModel viewModel;
     private RetrofitModel model;
 
-    public LoginPresenter(LoginView view, RetrofitModel model) {
+    public LoginPresenter(LoginView view, LoginViewModel viewModel, RetrofitModel model) {
         this.view = view;
+        this.viewModel = viewModel;
         this.model = model;
     }
 
-    public void checkValidAndLogin(String email, String password) {
-
-        login(email, password);
+    public void onLoginButtonClicked() {
+        if (!checkValid()) {
+            return;
+        }
+        requestLogin();
     }
 
-    private void login(String email, String password) {
-        model.login(email, password)
+    private boolean checkValid() {
+        viewModel.emailError.set("".equals(viewModel.email.get()));
+        viewModel.passwordError.set("".equals(viewModel.password.get()));
+        return !(viewModel.emailError.get() || viewModel.passwordError.get());
+    }
+
+    private void requestLogin() {
+        model.login(viewModel.email.get(), viewModel.password.get())
                 .observeOn(Injection.ObserveScheduler())
                 .subscribeOn(Injection.SubscribeScheduler())
                 .subscribe(getSubscriber());
@@ -35,15 +45,15 @@ public class LoginPresenter {
 
             @Override
             public void onError(Throwable e) {
-                view.showLoginError(e.getMessage());
+                view.showLoginErrorMessage(e.getMessage());
             }
 
             @Override
             public void onNext(LoginResponse loginResponse) {
                 if (loginResponse.status == 1) {
-                    view.showLoginSuccess();
+                    view.showLoginSuccessMessage();
                 } else {
-                    view.showLoginFailed();
+                    view.showLoginFailedMessage();
                 }
             }
         };
