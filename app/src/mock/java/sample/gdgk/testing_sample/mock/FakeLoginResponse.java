@@ -4,15 +4,11 @@ import sample.gdgk.testing_sample.model.LoginResponse;
 
 public class FakeLoginResponse {
     public static LoginResponse mockSuccessResponse() {
-        LoginResponse response = new LoginResponse();
-        response.status = 1;
-        return response;
+        return new LoginResponse(1);
     }
 
     public static LoginResponse mockFailedResponse() {
-        LoginResponse response = new LoginResponse();
-        response.status = 0;
-        return response;
+        return new LoginResponse(0);
     }
 
 }

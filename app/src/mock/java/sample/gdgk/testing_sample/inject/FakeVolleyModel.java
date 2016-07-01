@@ -11,8 +11,7 @@ public class FakeVolleyModel implements VolleyModel {
                       String password,
                       Response.Listener<LoginResponse> listener,
                       Response.ErrorListener errorListener) {
-        LoginResponse response = new LoginResponse();
-        response.status = 1;
+        LoginResponse response = new LoginResponse(1);
 
         listener.onResponse(response);
     }
