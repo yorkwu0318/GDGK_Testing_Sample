@@ -5,5 +5,5 @@ public interface LoginView {
 
     void showLoginFailedMessage();
 
-    void showLoginErrorMessage(String message);
+    void showLoginErrorMessage();
 }

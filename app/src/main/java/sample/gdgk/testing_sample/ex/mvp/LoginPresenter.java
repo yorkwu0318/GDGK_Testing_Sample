@@ -53,7 +53,7 @@ public class LoginPresenter {
 
             @Override
             public void onError(Throwable e) {
-                view.showLoginError(e.getMessage());
+                view.showLoginError();
             }
 
             @Override

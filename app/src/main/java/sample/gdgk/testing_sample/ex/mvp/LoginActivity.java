@@ -18,6 +18,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     private View root;
 
+    @SuppressWarnings("all")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +57,8 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void showLoginError(String message) {
-        Snackbar.make(root, message, Snackbar.LENGTH_LONG).show();
+    public void showLoginError() {
+        Snackbar.make(root, R.string.login_error, Snackbar.LENGTH_LONG).show();
     }
 
     @Override

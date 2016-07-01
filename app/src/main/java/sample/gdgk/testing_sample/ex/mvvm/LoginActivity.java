@@ -12,18 +12,16 @@ import sample.gdgk.testing_sample.inject.Injection;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
 
-    private LoginPresenter presenter;
     private ActivityEx2MvvmBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         LoginViewModel viewModel = new LoginViewModel();
-        presenter = new LoginPresenter(this, viewModel, Injection.provideRetrofitModel());
+        viewModel.setDependency(this, Injection.provideRetrofitModel());
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_ex2_mvvm);
         binding.setViewModel(viewModel);
-        binding.setPresenter(presenter);
     }
 
     @Override
@@ -37,7 +35,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     }
 
     @Override
-    public void showLoginErrorMessage(String message) {
+    public void showLoginErrorMessage() {
         Snackbar.make(binding.getRoot(), R.string.login_error, Snackbar.LENGTH_LONG).show();
     }
 }

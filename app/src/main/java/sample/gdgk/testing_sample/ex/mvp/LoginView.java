@@ -5,7 +5,7 @@ public interface LoginView {
     void showPasswordError();
     void clearErrorMessage();
 
-    void showLoginError(String message);
+    void showLoginError();
     void showLoginSuccess();
     void showLoginFailed();
 }
