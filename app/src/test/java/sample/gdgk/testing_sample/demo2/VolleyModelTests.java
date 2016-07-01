@@ -1,4 +1,4 @@
-package sample.gdgk.testing_sample.ex2.demo2;
+package sample.gdgk.testing_sample.demo2;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

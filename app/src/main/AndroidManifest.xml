@@ -28,6 +28,9 @@
         <activity android:name=".demo2.LoginActivity"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".demo3.LoginActivity"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".ex1.mvpvm.LoginActivity"
             android:screenOrientation="portrait"/>
 

@@ -1,4 +1,4 @@
-package sample.gdgk.testing_sample.ex1.demo2;
+package sample.gdgk.testing_sample.demo2;
 
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -8,7 +8,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import sample.gdgk.testing_sample.R;
-import sample.gdgk.testing_sample.ex1.mvpvm.LoginActivity;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -28,12 +27,11 @@ public class LoginActivityTests {
 
     @Test
     public void testLoginSuccess() {
-
         onView(withHint(R.string.email)).perform(typeText("sample@abc.com"));
         onView(withHint(R.string.password)).perform(typeText("123456"));
-//        onView(withText(R.string.login)).perform(click());
+        onView(withText(R.string.login)).perform(click());
 
-        onView(withId(R.id.loginButton))
-                .check(matches(withText("loginnnn")));
+        onView(allOf(withId(android.support.design.R.id.snackbar_text), withText(R.string.login_success)))
+                .check(matches(isDisplayed()));
     }
 }
