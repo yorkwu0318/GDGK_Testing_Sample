@@ -7,5 +7,7 @@ import rx.Observable;
 public interface RetrofitModel {
 
     @GET("/login-test.php")
-    Observable<LoginResponse> login(@Query("account") String email, @Query("password") String password);
+    Observable<LoginResponse> login(
+            @Query("account") String email,
+            @Query("password") String password);
 }

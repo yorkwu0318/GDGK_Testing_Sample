@@ -8,6 +8,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import rx.Observable;
 import sample.gdgk.testing_sample.mock.FakeLoginResponse;
+import sample.gdgk.testing_sample.model.LoginResponse;
 import sample.gdgk.testing_sample.model.RetrofitModel;
 
 import static org.mockito.Matchers.anyString;
@@ -33,7 +34,7 @@ public class LoginPresenterTests {
 
     @Test
     public void testLoginSuccess() {
-        when(model.login(anyString(), anyString())).thenReturn(Observable.just(FakeLoginResponse.mockSuccessResponse()));
+        when(model.login(anyString(), anyString())).thenReturn(Observable.just(new LoginResponse(1)));
 
         presenter.checkValidAndLogin("test@abc.com", "123456");
         verify(model).login("test@abc.com", "123456");
@@ -42,7 +43,7 @@ public class LoginPresenterTests {
 
     @Test
     public void testLoginFailed() {
-        when(model.login(anyString(), anyString())).thenReturn(Observable.just(FakeLoginResponse.mockFailedResponse()));
+        when(model.login(anyString(), anyString())).thenReturn(Observable.just(new LoginResponse(0)));
         presenter.checkValidAndLogin("test@abc.com", "123456");
         verify(view).showLoginFailed();
     }
