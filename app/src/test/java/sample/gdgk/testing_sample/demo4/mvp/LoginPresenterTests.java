@@ -1,6 +1,5 @@
 package sample.gdgk.testing_sample.demo4.mvp;
 
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
 import org.junit.Before;
@@ -30,7 +29,7 @@ public class LoginPresenterTests {
     public void testLoginSuccess() {
         VolleyModel model = new FakeVolleyModel();
         LoginPresenter presenter = new LoginPresenter(view, model);
-        presenter.checkValidAndLogin("test@abc.com", "123456");
+        presenter.login("test@abc.com", "123456");
 
         verify(view).showLoginSuccess();
     }
@@ -40,7 +39,7 @@ public class LoginPresenterTests {
         VolleyModel model = (email, password, listener, errorListener) -> listener.onResponse(new LoginResponse(0));
 
         LoginPresenter presenter = new LoginPresenter(view, model);
-        presenter.checkValidAndLogin("test@abc.com", "123456");
+        presenter.login("test@abc.com", "123456");
 
         verify(view).showLoginFailed();
     }
@@ -50,7 +49,7 @@ public class LoginPresenterTests {
         VolleyModel model = (email, password, listener, errorListener) -> errorListener.onErrorResponse(new VolleyError());
 
         LoginPresenter presenter = new LoginPresenter(view, model);
-        presenter.checkValidAndLogin("test@abc.com", "123456");
+        presenter.login("test@abc.com", "123456");
 
         verify(view).showLoginError();
     }

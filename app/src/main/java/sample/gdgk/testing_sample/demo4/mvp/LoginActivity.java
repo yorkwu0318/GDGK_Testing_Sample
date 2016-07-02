@@ -11,7 +11,8 @@ import sample.gdgk.testing_sample.R;
 import sample.gdgk.testing_sample.inject.Injection;
 
 public class LoginActivity extends AppCompatActivity implements LoginView {
-    private LoginPresenter presenter = new LoginPresenter(this, Injection.provideVolleyModel());
+    private LoginPresenter presenter =
+            new LoginPresenter(this, Injection.provideVolleyModel());
 
     private View root;
 
@@ -28,10 +29,10 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         EditText passwordEdit = (EditText) findViewById(R.id.passwordEdit);
 
         View loginButton = findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(v -> presenter.checkValidAndLogin(emailEdit.getText().toString(),
+
+        loginButton.setOnClickListener(v -> presenter.login(
+                emailEdit.getText().toString(),
                 passwordEdit.getText().toString()));
-
-
     }
 
     @Override

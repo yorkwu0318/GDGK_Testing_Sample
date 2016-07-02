@@ -15,12 +15,7 @@ public class LoginPresenter {
         this.model = model;
     }
 
-    public void checkValidAndLogin(String email, String password) {
-
-        login(email, password);
-    }
-
-    private void login(String email, String password) {
+    public void login(String email, String password) {
         model.login(email,
                 password,
                 new Response.Listener<LoginResponse>() {
