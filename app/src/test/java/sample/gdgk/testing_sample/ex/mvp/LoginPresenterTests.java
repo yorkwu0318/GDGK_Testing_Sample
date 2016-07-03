@@ -7,11 +7,12 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import rx.Observable;
-import sample.gdgk.testing_sample.mock.FakeLoginResponse;
+import sample.gdgk.testing_sample.inject.FakeRetrofitModel;
 import sample.gdgk.testing_sample.model.LoginResponse;
 import sample.gdgk.testing_sample.model.RetrofitModel;
 
 import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -34,7 +35,8 @@ public class LoginPresenterTests {
 
     @Test
     public void testLoginSuccess() {
-        when(model.login(anyString(), anyString())).thenReturn(Observable.just(new LoginResponse(1)));
+        when(model.login(anyString(), anyString()))
+                .thenReturn(Observable.just(new LoginResponse(1)));
 
         presenter.checkValidAndLogin("test@abc.com", "123456");
         verify(model).login("test@abc.com", "123456");
@@ -42,8 +44,21 @@ public class LoginPresenterTests {
     }
 
     @Test
+    public void testLoginSuccessByMockData() {
+        RetrofitModel model = new FakeRetrofitModel();
+        RetrofitModel spy = spy(model);
+        presenter = new LoginPresenter(view, spy);
+
+        presenter.checkValidAndLogin("test@abc.com", "123456");
+
+        verify(spy).login("test@abc.com", "123456");
+        verify(view).showLoginSuccess();
+    }
+
+    @Test
     public void testLoginFailed() {
-        when(model.login(anyString(), anyString())).thenReturn(Observable.just(new LoginResponse(0)));
+        when(model.login(anyString(), anyString()))
+                .thenReturn(Observable.just(new LoginResponse(0)));
         presenter.checkValidAndLogin("test@abc.com", "123456");
         verify(view).showLoginFailed();
     }

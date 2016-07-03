@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_ex2);
+        setContentView(R.layout.activity_ex);
 
         root = findViewById(R.id.root);
 
@@ -36,8 +36,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         View loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(v -> presenter.checkValidAndLogin(emailEdit.getText().toString(),
                 passwordEdit.getText().toString()));
-
-
     }
 
     @Override
